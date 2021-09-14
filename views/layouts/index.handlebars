@@ -216,6 +216,7 @@
             </div>
             <div class="six columns">
               <h5>Settings</h5>
+              <form action="/settings" method="POST">
               <label for="exampleEmailInput">Call cost</label>
               <input class="u-full-width callCostSetting" type="number" placeholder="eg. 2.55">
               <label for="exampleEmailInput">SMS cost</label>
@@ -224,8 +225,9 @@
               <input class="u-full-width warningLevelSetting " type="number" placeholder="eg. 30.00" class="warningLevel" >
               <label for="">Critical level</label>
               <input class="u-full-width criticalLevelSetting" type="number" placeholder="eg. 65.00" >
-              <button class="button-primary updateSettings" type="button" name="button">Update settings</button>
+              <button class="button-primary updateSettings" type="submit" name="button">Update settings</button>
 
+              </form>
             </div>
 
             
