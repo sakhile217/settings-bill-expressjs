@@ -7,6 +7,13 @@ const app = express();
 const settingsBill = SettingsBill();
 
 
+/*const handlebarSetup = exphbs({
+    partialsDir: "./views/partials",
+    viewPath:  './views',
+    layoutsDir : './views/layouts'
+});
+*/
+
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
@@ -18,7 +25,9 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 app.get('/', function (req, res) {
-    res.render('layouts', {settings: settingsBill.getSettings});
+    res.render('layouts', {settings: settingsBill.getSettings(),
+      totals: settingsBill.totals()  
+    });
 });
 
 app.listen(3011, function(){
@@ -42,7 +51,9 @@ res.redirect('/');
 });
 
 app.post('/action', function(req, res){
-
+//capture the call type to add
+settingsBill.recordAction(req.body.actionType)
+res.redirect('/');
 });
 
 app.get('/actions', function(req, res){
