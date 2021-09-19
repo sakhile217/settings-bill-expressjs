@@ -53,10 +53,15 @@ res.redirect('/');
 app.post('/action', function(req, res){
 //capture the call type to add
 settingsBill.recordAction(req.body.actionType)
+
+//console.log(req.body.actionType);
 res.redirect('/');
+
 });
 
 app.get('/actions', function(req, res){
+
+res.render('actions');
 
 });
 
